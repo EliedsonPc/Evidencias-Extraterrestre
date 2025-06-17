@@ -1,0 +1,279 @@
+/* Reset geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif; /* Fonte futurista */
+}
+
+body {
+  background-color: #0d0f1b; /* Fundo escuro, com tom espacial */
+  color: #e0e0e0;
+  line-height: 1.6;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden; /* Evitar barras de rolagem horizontais */
+}
+
+/* Fundo da página */
+.bg {
+  background-image: url('https://image.freepik.com/fotos-gratis/ceu-escuro-estrelado-com-estrelas_118086-1576.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Menu lateral */
+.side-menu ul {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  list-style: none;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.side-menu li a {
+  font-size: 18px;
+  padding: 20px;
+  background: linear-gradient(45deg, #1c1c2b, #003459);
+  color: #0dff99; /* Neon Alienígena */
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 0 10px #0dff99, 0 0 40px #0dff99;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.side-menu li a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #0dff99, 0 0 60px #00ffaa; /* Efeito de brilho neon */
+}
+
+/* Título da página */
+.pagina-teoria-cospiracao {
+  text-align: center;
+  font-size: 80px;
+  color: #0dff99;
+  margin-top: 100px;
+  -webkit-text-stroke: 2px #0dff99;
+  text-shadow: 0 0 15px #0dff99, 0 0 40px #00ffaa;
+}
+
+/* Logo */
+.logo {
+  width: 300px;
+  height: 300px;
+  background: url('https://png.pngtree.com/back_origin_pic/00/04/53/c8f8865126599327e98b61359090f76d.jpg') center no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  margin: 40px auto;
+  box-shadow: 0 0 30px #0dff99;
+}
+
+.logo img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+/* Container principal para alinhar melhor o conteúdo */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Estrutura das seções */
+.mae {
+  width: 100%;
+  max-width: 900px; /* Limitar largura */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0, 255, 204, 0.5);
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  margin-right: auto; /* Centraliza os posts */
+}
+
+.mae:hover {
+  transform: scale(1.02);
+}
+
+.frame1 img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 15px;
+  margin: 20px auto;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+}
+
+.titulo {
+  font-size: 40px;
+  color: #0dff99;
+  margin-top: 30px;
+  text-align: center;
+  text-shadow: 0 0 15px #0dff99;
+}
+
+.descricao {
+  font-size: 18px;
+  color: #ccc;
+  text-align: center;
+  margin: 20px;
+  line-height: 1.8;
+}
+
+.frame1 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 255, 204, 0.6);
+}
+
+.titulo-img-enki {
+  font-size: 22px;
+  color: #0dff99;
+  text-shadow: 0 0 15px #0dff99;
+  margin-top: 10px;
+}
+
+.tex-explicativo {
+  font-style: italic;
+  color: #aaa;
+  text-align: center;
+  margin-top: 5px;
+}
+
+iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+iframe:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0, 255, 204, 0.7);
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .side-menu ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .pagina-teoria-cospiracao {
+    font-size: 60px; /* Ajustar o tamanho do título em telas menores */
+  }
+
+  .mae {
+    width: 90%; /* Ajustar a largura dos posts */
+  }
+
+  .frame1 img {
+    max-width: 100%;
+  }
+
+  .titulo {
+    font-size: 30px;
+  }
+
+  .descricao {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .pagina-teoria-cospiracao {
+    font-size: 50px;
+  }
+
+  .mae {
+    width: 95%; /* Ajuste para telas muito pequenas */
+  }
+
+  .frame1 img {
+    max-width: 100%;
+  }
+
+  .titulo {
+    font-size: 26px;
+  }
+
+  .descricao {
+    font-size: 14px;
+  }
+
+  iframe {
+    height: 250px;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 10px #0dff99, 0 0 20px #00ffaa;
+  }
+  50% {
+    text-shadow: 0 0 30px #0dff99, 0 0 40px #00ffaa;
+  }
+  100% {
+    text-shadow: 0 0 10px #0dff99, 0 0 20px #00ffaa;
+  }
+}
+
+.pagina-teoria-cospiracao {
+  animation: pulseGlow 2s infinite alternate; /* Pulso de neon */
+}
+
+/* Estilo para os elementos flutuantes */
+.ilustrativo {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.ilustrativo img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+}
+
+.ilustrativo p {
+  text-align: center;
+  color: #0dff99;
+  margin-top: 10px;
+  text-shadow: 0 0 15px #0dff99;
+}
+
+/* Efeito de animação para textos de título */
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.titulo, .descricao {
+  animation: textFadeIn 1s ease-out forwards;
+}
