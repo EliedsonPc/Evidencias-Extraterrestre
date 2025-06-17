@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatos Populares - Extraterrestres Revelados</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+
+/* Estilo geral do modal */
+#contactModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Container interno do modal */
+#contactModal > div {
+  background: #1a1a3d;
+  max-width: 600px;
+  margin: auto;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Título do modal */
+#contactModal h2 {
+  color: #64ffda;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+/* Botão fechar */
+#contactModal span {
+  float: right;
+  cursor: pointer;
+  font-size: 28px;
+  color: #64ffda;
+  transition: color 0.3s ease;
+}
+#contactModal span:hover {
+  color: #a0f0d9;
+}
+
+/* Formulário */
+#reportForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Labels */
+#reportForm label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #64ffda;
+  margin-bottom: 6px;
+}
+
+/* Inputs e textarea */
+#reportForm input[type="text"],
+#reportForm input[type="email"],
+#reportForm input[type="file"],
+#reportForm textarea {
+  background-color: #2a2a60;
+  border: 2px solid #64ffda;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 16px;
+  color: #e0f7f1;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#reportForm input[type="text"]:focus,
+#reportForm input[type="email"]:focus,
+#reportForm input[type="file"]:focus,
+#reportForm textarea:focus {
+  outline: none;
+  border-color: #00ffe7;
+  background-color: #334475;
+}
+
+/* Textarea altura maior */
+#reportForm textarea {
+  min-height: 140px;
+}
+
+/* Botão de enviar */
+#reportForm button[type="submit"] {
+  background-color: #64ffda;
+  color: #1a1a3d;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 14px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.6);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+}
+
+#reportForm button[type="submit"]:hover {
+  background-color: #00e6c2;
+  color: #0f1e2e;
+}
+
+/* Upload file label estilizado */
+#reportForm input[type="file"] {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 640px) {
+  #contactModal > div {
+    max-width: 90%;
+    padding: 25px 20px;
+  }
+  
+  #contactModal h2 {
+    font-size: 24px;
+  }
+}
+
+
+</style>
+<body>
+
+<!-- Banner Principal -->
+<div class="banner">
+    <img src="../images/banner.png" alt="Banner UFO">
+</div>
+
+<!-- Cabeçalho com Logo -->
+<header class="header">
+    <div class="logo">
+        <img src="https://img1.picmix.com/output/stamp/normal/2/8/0/4/1014082_1ac8a.gif" alt="Extraterrestres Revelados">
+    </div>
+</header>
+
+<!-- Menu Principal -->
+<nav class="main-menu">
+    <ul>
+        <li><a href="../index.html"><i class="fas fa-home"></i> Voltar para Início</a></li>
+        <li><a href="#" onclick="openModal()"><i class="fas fa-paper-plane"></i> Envie um Relato</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <!-- Conteúdo Principal -->
+    <main class="content">
+        <h1>Relatos Populares</h1>
+        <div id="relatosContainer" class="posts-container"></div>
+    </main>
+
+    <!-- Barra Lateral Direita -->
+    <aside class="sidebar-right">
+        <div class="widget">
+            <h3>Sobre o Blog</h3>
+            <p>Blog dedicado a relatos verídicos de encontros com extraterrestres.</p>
+        </div>
+    </aside>
+</div>
+
+<!-- Modal de Relato -->
+<div id="contactModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; padding-top:50px;">
+    <div style="background:#1a1a3d; max-width:500px; margin:auto; padding:20px; border-radius:8px;">
+        <span style="float:right; cursor:pointer; font-size:24px;" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
+        <h2 style="color:#64ffda; margin-bottom:20px;">Envie Seu Relato</h2>
+        <form id="reportForm">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+
+            <button type="submit">Enviar Relato</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Carrega relatos do localStorage
+function carregarRelatos() {
+    const container = document.getElementById('relatosContainer');
+    const relatos = JSON.parse(localStorage.getItem('relatos')) || [];
+    container.innerHTML = '';
+    relatos.forEach(relato => {
+        const article = document.createElement('article');
+        article.className = 'post';
+
+        const img = document.createElement('img');
+        img.src = relato.imagem;
+        img.alt = relato.titulo;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'post-content';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = relato.titulo;
+
+        const p = document.createElement('p');
+        p.textContent = relato.descricao;
+
+        contentDiv.appendChild(h2);
+        contentDiv.appendChild(p);
+
+        article.appendChild(img);
+        article.appendChild(contentDiv);
+
+        container.appendChild(article);
+    });
+}
+
+// Enviar novo relato
+document.getElementById('reportForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById('titulo').value;
+    const descricao = document.getElementById('descricao').value;
+    const imagemInput = document.getElementById('imagem');
+    const reader = new FileReader();
+
+    reader.onload = function () {
+        const novaImagem = reader.result;
+        const novoRelato = { titulo, descricao, imagem: novaImagem };
+        const relatos = JSON.parse(localStorage.getItem('relatos')) || [];
+        relatos.unshift(novoRelato);
+        localStorage.setItem('relatos', JSON.stringify(relatos));
+        document.getElementById('contactModal').style.display = 'none';
+        carregarRelatos();
+    };
+
+    if (imagemInput.files[0]) {
+        reader.readAsDataURL(imagemInput.files[0]);
+    }
+});
+
+// Modal handler
+function openModal() {
+    document.getElementById('contactModal').style.display = 'block';
+}
+
+// Inicializa
+window.onload = carregarRelatos;
+</script>
+
+</body>
+</html>
