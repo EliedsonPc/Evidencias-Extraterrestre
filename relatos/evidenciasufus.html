@@ -12,31 +12,65 @@
     box-sizing: border-box;
   }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0f1424;
-    color: #e0f7f1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+ body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/1/17/Digital_rain_animation_small_letters_clear.gif') no-repeat center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+
+/* Banner */
+.banner img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    filter: brightness(70%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /* Faz o banner ficar atrás da logo */
+}
+
+/* Logo */
+.logo {
+      color: white;
+  -webkit-text-stroke: 2px #00ff00;
+    display: inline-block;
+    width: 300px; /* Ajuste do tamanho da logo */
+    height: 300px;
+    border-radius: 50%; /* Faz a logo ficar dentro de um círculo */
+    overflow: hidden;
+    background: url('https://png.pngtree.com/back_origin_pic/00/04/53/c8f8865126599327e98b61359090f76d.jpg') center no-repeat; /* Fundo escuro para o círculo */
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.7), 0 0 50px rgba(255, 0, 255, 0.6); /* Efeito de brilho futurista */
+    position: relative; /* Garante que a logo seja posicionada acima do banner */
+    z-index: 1; /* A logo fica acima do banner */
+}
 
   header {
-    background: #1a1a3d;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     padding: 20px;
     text-align: center;
     box-shadow: 0 3px 10px rgba(100, 255, 218, 0.4);
   }
 
   header h1 {
-    color: #64ffda;
+    color: rgb(0, 255, 0);
     font-weight: 700;
     letter-spacing: 1.5px;
     font-size: 2.4rem;
   }
 
   nav {
-    background: #222852;
+    background: rgb(0, 255, 0);
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -45,9 +79,9 @@
   }
 
   nav a {
-    color: #64ffda;
+    color: black;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 1.1rem;
     padding: 8px 15px;
     border-radius: 6px;
@@ -56,8 +90,8 @@
 
   nav a:hover,
   nav a.active {
-    background-color: #64ffda;
-    color: #1a1a3d;
+    background-color: black;
+    color: white;
   }
 
   main {
@@ -70,7 +104,7 @@
   h2 {
     text-align: center;
     margin-bottom: 30px;
-    color: #64ffda;
+    color: rgb(0, 255, 0);
     font-weight: 700;
     font-size: 2rem;
     letter-spacing: 1.1px;
@@ -89,13 +123,13 @@
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
     cursor: pointer;
-    background: #222852;
+    background-color: rgb(255, 255, 249)
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .gallery-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(100, 255, 218, 0.9);
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.9);
   }
 
   .gallery-item img {
@@ -108,27 +142,42 @@
 
   /* Legenda sobre a imagem */
   .caption {
+    background-color: black;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
-    color: #64ffda;
+    color: rgb(0, 255, 0);
     padding: 10px 15px;
-    font-weight: 600;
+    font-weight: 600px;
     font-size: 1rem;
     box-sizing: border-box;
     border-radius: 0 0 12px 12px;
     user-select: none;
   }
+  .caption:hover{
+    transition: 0.5s;
+    background: linear-gradient(1deg, rgba(0,255,0,0.70) 5%, transparent 80%);
+  }
 
   /* Rodapé simples */
-  footer {
-    background: #1a1a3d;
-    color: #64ffda;
+  .container {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    background: rgb(0, 255, 0);
+    color: black;
     text-align: center;
-    padding: 15px 10px;
-    font-size: 0.9rem;
+    box-shadow: 0 -3px 10px rgba(100, 255, 218, 0.3);
+  }
+  /* Rodapé simples */
+  .text-inf {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    background: rgb(0, 255, 0);
+    color: black;
+    text-align: center;
     box-shadow: 0 -3px 10px rgba(100, 255, 218, 0.3);
   }
 
@@ -142,14 +191,22 @@
 </head>
 <body>
 
-<header>
-  <h1>Supostos Fatos Reais</h1>
+<!-- Banner Principal -->
+<div class="banner">
+    <img src="C:\Users\user\Videos\extraterrestres-revelados\images\banner.png" text="Avistamentos+UFOs+Relatos+Extraterrestres" alt="Banner UFO">
+</div>
+
+<!-- Cabeçalho com Logo -->
+<header class="header">
+    <div class="logo">
+        <img src="https://img1.picmix.com/output/stamp/normal/2/8/0/4/1014082_1ac8a.gif" text="Extraterrestres+Revelados" alt="Extraterrestres Revelados">
+    </div>
 </header>
 
 <nav>
-  <a href="https://eliedsonpc.github.io/Evidencias-Extraterrestre/index.html">Pagina Inicial</a>
+  <a href="C:\Users\user\Videos\extraterrestres-revelados\index.html">Página Inicial</a>
   <a href="#" class="active">Evidências UFOs</a>
-  <a href="https://eliedsonpc.github.io/relatospopulares.html">Relatos Populares</a>
+  <a href="relatospopulares.html">Relatos Populares</a>
 
 </nav>
 
@@ -186,9 +243,9 @@
   </section>
 </main>
 
-<footer>
-  &copy; 2023 Extraterrestres Revelados. Todos os direitos reservados.
-</footer>
+<div class="container">
+   <h1 class="text-inf">&copy; 2023 Extraterrestres Revelados. Todos os direitos reservados.</h1>
+</div>
 
 </body>
 </html>
