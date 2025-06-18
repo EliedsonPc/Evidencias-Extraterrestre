@@ -1,279 +1,156 @@
-/* Reset geral */
+/* Reset e fonte */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif; /* Fonte futurista */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #0d0f1b; /* Fundo escuro, com tom espacial */
-  color: #e0e0e0;
-  line-height: 1.6;
-  font-family: 'Orbitron', sans-serif;
-  overflow-x: hidden; /* Evitar barras de rolagem horizontais */
-}
-
-/* Fundo da página */
-.bg {
-  background-image: url('https://image.freepik.com/fotos-gratis/ceu-escuro-estrelado-com-estrelas_118086-1576.jpg');
+  background: url('https://upload.wikimedia.org/wikipedia/commons/1/17/Digital_rain_animation_small_letters_clear.gif') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-/* Menu lateral */
-.side-menu ul {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  list-style: none;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.side-menu li a {
-  font-size: 18px;
-  padding: 20px;
-  background: linear-gradient(45deg, #1c1c2b, #003459);
-  color: #0dff99; /* Neon Alienígena */
-  text-decoration: none;
-  border-radius: 30px;
-  box-shadow: 0 0 10px #0dff99, 0 0 40px #0dff99;
-  font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.side-menu li a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #0dff99, 0 0 60px #00ffaa; /* Efeito de brilho neon */
+  color: #00ff00;
+  padding-bottom: 50px;
 }
 
 /* Título da página */
-.pagina-teoria-cospiracao {
+.titulo-pagina {
   text-align: center;
-  font-size: 80px;
-  color: #0dff99;
-  margin-top: 100px;
-  -webkit-text-stroke: 2px #0dff99;
-  text-shadow: 0 0 15px #0dff99, 0 0 40px #00ffaa;
+  padding: 30px 20px 10px;
+}
+
+.pagina-teoria-cospiracao {
+  color: #00ff00;
+  font-size: 2rem;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  border-bottom: 2px solid #00ff00;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 
 /* Logo */
 .logo {
-  width: 300px;
-  height: 300px;
-  background: url('https://png.pngtree.com/back_origin_pic/00/04/53/c8f8865126599327e98b61359090f76d.jpg') center no-repeat;
-  background-size: cover;
-  border-radius: 50%;
-  margin: 40px auto;
-  box-shadow: 0 0 30px #0dff99;
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
 }
 
 .logo img {
-  max-width: 100%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.7), 0 0 50px rgba(255, 0, 255, 0.6);
+  object-fit: cover;
 }
 
-/* Container principal para alinhar melhor o conteúdo */
+/* Sidebar */
+.sidebar-left {
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-right: 2px solid #00ff00;
+  box-shadow: 0 0 15px #00ff00;
+}
+
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu li {
+  margin-bottom: 20px;
+}
+
+.side-menu a {
+  color: #00ff00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  display: block;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.side-menu a:hover {
+  background-color: #00ff00;
+  color: black;
+  border-color: #00ff00;
+}
+
+/* Conteúdo principal */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin-left: 240px;
   padding: 20px;
 }
 
-/* Estrutura das seções */
+/* Blocos de conteúdo */
 .mae {
-  width: 100%;
-  max-width: 900px; /* Limitar largura */
-  background: rgba(0, 0, 0, 0.7);
-  padding: 30px;
-  margin-bottom: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 50px rgba(0, 255, 204, 0.5);
-  transition: transform 0.3s ease;
-  margin-left: auto;
-  margin-right: auto; /* Centraliza os posts */
+  margin: 50px 260px 60px;
+  background-color: rgba(20, 20, 20, 0.85);
+  border: 2px solid #00ff00;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 0 20px #00ff00;
 }
 
-.mae:hover {
-  transform: scale(1.02);
+.frame1 h2.titulo {
+  color: #00ff00;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #00ff00;
 }
 
 .frame1 img {
   width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 15px;
-  margin: 20px auto;
-  box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
-}
-
-.titulo {
-  font-size: 40px;
-  color: #0dff99;
-  margin-top: 30px;
-  text-align: center;
-  text-shadow: 0 0 15px #0dff99;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px #00ff00;
 }
 
 .descricao {
-  font-size: 18px;
-  color: #ccc;
-  text-align: center;
-  margin: 20px;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccffcc;
 }
 
-.frame1 {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 50px rgba(0, 255, 204, 0.6);
-}
-
-.titulo-img-enki {
-  font-size: 22px;
-  color: #0dff99;
-  text-shadow: 0 0 15px #0dff99;
-  margin-top: 10px;
-}
-
-.tex-explicativo {
-  font-style: italic;
-  color: #aaa;
-  text-align: center;
-  margin-top: 5px;
-}
-
+/* YouTube iframe */
 iframe {
   width: 100%;
-  height: 315px;
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
-  border: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 800px;
+  height: 400px;
+  display: block;
+  margin: 30px auto 0;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ff00;
 }
 
-iframe:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(0, 255, 204, 0.7);
-}
-
-/* Responsividade */
-@media screen and (max-width: 768px) {
-  .side-menu ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .pagina-teoria-cospiracao {
-    font-size: 60px; /* Ajustar o tamanho do título em telas menores */
-  }
-
-  .mae {
-    width: 90%; /* Ajustar a largura dos posts */
-  }
-
-  .frame1 img {
-    max-width: 100%;
-  }
-
-  .titulo {
-    font-size: 30px;
-  }
-
-  .descricao {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .pagina-teoria-cospiracao {
-    font-size: 50px;
-  }
-
-  .mae {
-    width: 95%; /* Ajuste para telas muito pequenas */
-  }
-
-  .frame1 img {
-    max-width: 100%;
-  }
-
-  .titulo {
-    font-size: 26px;
-  }
-
-  .descricao {
-    font-size: 14px;
-  }
-
-  iframe {
-    height: 250px;
-  }
-}
-
-@keyframes pulseGlow {
-  0% {
-    text-shadow: 0 0 10px #0dff99, 0 0 20px #00ffaa;
-  }
-  50% {
-    text-shadow: 0 0 30px #0dff99, 0 0 40px #00ffaa;
-  }
-  100% {
-    text-shadow: 0 0 10px #0dff99, 0 0 20px #00ffaa;
-  }
-}
-
-.pagina-teoria-cospiracao {
-  animation: pulseGlow 2s infinite alternate; /* Pulso de neon */
-}
-
-/* Estilo para os elementos flutuantes */
+/* Ilustrações adicionais */
 .ilustrativo {
-  position: relative;
-  display: inline-block;
-  margin: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .ilustrativo img {
-  width: 100%;
+  width: 80%;
   max-width: 500px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ff00;
+  margin-bottom: 8px;
 }
 
-.ilustrativo p {
-  text-align: center;
-  color: #0dff99;
-  margin-top: 10px;
-  text-shadow: 0 0 15px #0dff99;
+.titulo-img-enki {
+  color: #00ff00;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
-/* Efeito de animação para textos de título */
-@keyframes textFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.titulo, .descricao {
-  animation: textFadeIn 1s ease-out forwards;
+.tex-explicativo {
+  font-size: 0.9rem;
+  color: #999;
 }
