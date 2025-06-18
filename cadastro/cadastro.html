@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de Usuário</title>
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/1/17/Digital_rain_animation_small_letters_clear.gif') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    /* Links */
+    a {
+      text-decoration: none;
+      color: #66ff66;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #ff00ff;
+    }
+
+    /* Cabeçalho */
+    .header {
+      padding: 30px 0 10px;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo {
+      color: white;
+      -webkit-text-stroke: 2px #00ff00;
+      display: inline-block;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: url('https://png.pngtree.com/back_origin_pic/00/04/53/c8f8865126599327e98b61359090f76d.jpg') center no-repeat;
+      box-shadow: 0 0 25px rgba(0, 255, 0, 0.7), 0 0 50px rgba(255, 0, 255, 0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(90%);
+    }
+
+    /* Menu de navegação */
+    nav {
+      background: rgb(0, 255, 0);
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 12px 0;
+      box-shadow: 0 2px 8px rgba(100, 255, 218, 0.3);
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: black;
+      color: white;
+    }
+
+    /* Formulário de cadastro */
+    #cadastroForm {
+      background-color: #808080;
+      border: 2px solid rgb(0, 255, 0);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgb(0, 255, 0);
+      text-align: center;
+      width: 300px;
+      margin: 50px auto; /* Centraliza horizontalmente e dá margem abaixo do menu */
+      animation: pulsar 3s infinite alternate;
+    }
+
+    @keyframes pulsar {
+      0% { box-shadow: 0 0 10px rgb(0, 255, 0); }
+      100% { box-shadow: 0 0 25px rgb(0, 255, 0); }
+    }
+
+    h1.email, h3.email {
+      font-weight: bold;
+      color: rgb(0, 255, 0);
+      font-size: 16px;
+      margin-bottom: 10px;
+
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      text-align: center;
+    }
+
+    button {
+      background-color: transparent;
+      color: rgb(0, 255, 0);
+      border: 2px solid rgb(0, 255, 0);
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgb(0, 255, 0);
+      color: #000;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgb(0, 255, 0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com Logo -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://img1.picmix.com/output/stamp/normal/2/8/0/4/1014082_1ac8a.gif" alt="Extraterrestres Revelados">
+    </div>
+  </header>
+
+  <!-- Menu superior -->
+  <nav>
+    <a href="https://eliedsonpc.github.io/Evidencias-Extraterrestre/index.html">Página Inicial</a>
+    <a href="#" class="active">Evidências UFOs</a>
+    <a href="relatospopulares.html">Relatos Populares</a>
+  </nav>
+
+  <!-- Formulário de Cadastro -->
+  <form id="cadastroForm">
+    <h3 class="email">Cadastro de Usuário</h3>
+    <h1 class="email">Digite um E-mail</h1>
+    <input type="email" id="email" placeholder="E-mail" required><br>
+    <h1 class="email">Digite uma Senha</h1>
+    <input type="password" id="senha" placeholder="Senha" required><br>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <!-- Configuração Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_PROJETO.firebaseapp.com",
+      projectId: "SEU_PROJETO",
+      storageBucket: "SEU_PROJETO.appspot.com",
+      messagingSenderId: "XXXXXX",
+      appId: "APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Script de cadastro -->
+  <script>
+    document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, senha)
+        .then(userCredential => {
+          alert("Usuário cadastrado com sucesso!");
+          // Redirecionar se desejar
+          // window.location.href = "login.html";
+        })
+        .catch(error => {
+          alert("Erro: " + error.message);
+        });
+    });
+  </script>
+
+</body>
+</html>
