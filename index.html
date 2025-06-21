@@ -656,20 +656,23 @@ a:hover {
 
 <script>
   const firebaseConfig = {
-  apiKey: "AIzaSyBcqlAdb0lk4124J3Kr3CN7jnt4dXGc-TM",
-  authDomain: "chat-ufologico.firebaseapp.com",
-  projectId: "chat-ufologico",
-  storageBucket: "chat-ufologico.firebasestorage.app",
-  messagingSenderId: "566797414917",
-  appId: "1:566797414917:web:2fd46955a34aafa50be26c",
-  measurementId: "G-KTTV2FJ547"
-};
+    apiKey: "AIzaSyBcqlAdb0lk4124J3Kr3CN7jnt4dXGc-TM",
+    authDomain: "chat-ufologico.firebaseapp.com",
+    projectId: "chat-ufologico",
+    storageBucket: "chat-ufologico.firebasestorage.app",
+    messagingSenderId: "566797414917",
+    appId: "1:566797414917:web:2fd46955a34aafa50be26c",
+    measurementId: "G-KTTV2FJ547"
+  };
 
+  // Inicializa Firebase
   firebase.initializeApp(firebaseConfig);
+
+  // Referência ao Realtime Database
   const db = firebase.database();
   const chatRef = db.ref("chat");
 
-  // Enviar mensagem ao clicar no botão
+  // Evento ao clicar no botão "Enviar"
   document.getElementById("send-message").addEventListener("click", () => {
     const input = document.getElementById("message-input");
     const texto = input.value.trim();
@@ -684,7 +687,7 @@ a:hover {
     }
   });
 
-  // Exibir mensagens em tempo real
+  // Escuta novas mensagens em tempo real
   chatRef.on("child_added", (data) => {
     const msg = data.val();
     const box = document.getElementById("chat-box");
