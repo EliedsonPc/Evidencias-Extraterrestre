@@ -445,6 +445,50 @@ a:hover {
     width: 200px;
     height: 200px;
   }
+.chat-box {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #0d0d0d;
+  border-radius: 10px;
+  border: 1px solid #33cc33;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.chat-input textarea {
+  width: 100%;
+  padding: 10px;
+  resize: none;
+  border-radius: 8px;
+  border: 1px solid #33cc33;
+  background-color: #111;
+  color: #fff;
+}
+
+.chat-input button {
+  padding: 10px;
+  background-color: #33cc33;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chat-input button:hover {
+  background-color: #66ff66;
+}
+
+
 .chat-message {
   padding: 12px;
   margin: 8px 0;
@@ -606,54 +650,55 @@ a:hover {
   </div>
 </div>
 
-<!-- Scripts -->
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
 <script>
-  function openModal() {
-    document.getElementById('contactModal').style.display = 'block';
-  }
+  const firebaseConfig = {
+  apiKey: "AIzaSyBcqlAdb0lk4124J3Kr3CN7jnt4dXGc-TM",
+  authDomain: "chat-ufologico.firebaseapp.com",
+  projectId: "chat-ufologico",
+  storageBucket: "chat-ufologico.firebasestorage.app",
+  messagingSenderId: "566797414917",
+  appId: "1:566797414917:web:2fd46955a34aafa50be26c",
+  measurementId: "G-KTTV2FJ547"
+};
 
-  // Chat LocalStorage
-  window.addEventListener('DOMContentLoaded', () => {
-    const saved = JSON.parse(localStorage.getItem('chat-mensagens') || '[]');
-    saved.forEach(m => addMessage(m.texto, m.autor));
-  });
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const chatRef = db.ref("chat");
 
-  function addMessage(texto, autor = 'user') {
-    const chatBox = document.getElementById('chat-box');
-    const msgDiv = document.createElement('div');
-    msgDiv.classList.add('chat-message', autor);
-    msgDiv.textContent = texto;
-    chatBox.appendChild(msgDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-    salvarMensagem(texto, autor);
-  }
-
-  function salvarMensagem(texto, autor) {
-    const mensagens = JSON.parse(localStorage.getItem('chat-mensagens') || '[]');
-    mensagens.push({ texto, autor });
-    localStorage.setItem('chat-mensagens', JSON.stringify(mensagens));
-  }
-
-  function sendMessage() {
-    const input = document.getElementById('message-input');
+  // Enviar mensagem ao clicar no botão
+  document.getElementById("send-message").addEventListener("click", () => {
+    const input = document.getElementById("message-input");
     const texto = input.value.trim();
-    if (texto === '') return;
-    addMessage(texto, 'user');
-    input.value = '';
-    setTimeout(() => {
-      addMessage('Recebido! Investigando os sinais...', 'admin');
-    }, 1000);
-  }
-
-  document.getElementById('message-input').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
+    if (texto !== "") {
+      const msg = {
+        texto: texto,
+        tipo: "user",
+        timestamp: Date.now()
+      };
+      chatRef.push(msg);
+      input.value = "";
     }
   });
 
-  document.getElementById('send-message').addEventListener('click', sendMessage);
+  // Exibir mensagens em tempo real
+  chatRef.on("child_added", (data) => {
+    const msg = data.val();
+    const box = document.getElementById("chat-box");
+
+    const div = document.createElement("div");
+    div.classList.add("chat-message");
+    div.classList.add(msg.tipo === "user" ? "user" : "admin");
+    div.innerText = msg.texto;
+
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+  });
 </script>
+
 
 </body>
 </html>
